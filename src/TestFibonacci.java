@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class TestFibonacci {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 		Scanner questionUser = new Scanner(System.in);
 		

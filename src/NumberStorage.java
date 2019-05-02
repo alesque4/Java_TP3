@@ -30,6 +30,7 @@ public class NumberStorage {
 				}
 			}catch(Exception e) {
 				System.out.println("Mauvaise entrée !");
+				continue;
 			}
 			
 			switch(choix) {
@@ -68,7 +69,6 @@ public class NumberStorage {
 				affichage = affichage + "]";
 				System.out.println("Tableau : "+(new StringBuilder(affichage)).deleteCharAt(affichage.length()-3));
 				break;
-			default : throw new Exception("Ne devrait pas être ici");
 			}
 		}
 	}
