@@ -10,6 +10,7 @@ public class NumberStorage {
 		float[] tab_temp;
 		int tab_i=0, i=0;
 		String affichage = "";
+		boolean entreeUtilisateurOk = false;
 		
 		Scanner questionUser = new Scanner(System.in);
 		int choix=0;
@@ -21,26 +22,37 @@ public class NumberStorage {
 			System.out.println("1 : Ajouter un nombre");
 			System.out.println("2 : Afficher le tableau");
 			System.out.print("Choix : ");
+			entreeUtilisateurOk=false;
 			
 			//Récupération du choix de l'utilisateur
-			try {
-				choix = questionUser.nextInt();
-				if(choix != 1 && choix != 2) {
-					throw new Exception("Mauvais choix");
+			while(!entreeUtilisateurOk) {
+				if(questionUser.hasNextInt()) {
+					choix = questionUser.nextInt();
+					if(choix == 1 || choix == 2) {
+						entreeUtilisateurOk = true;
+					}else {
+						System.out.println("Entrez une valeur valide.");
+					}
+				}else {
+					System.out.println("Entrez une valeur valide.");
+					questionUser.next();
 				}
-			}catch(Exception e) {
-				System.out.println("Mauvaise entrée !");
-				continue;
 			}
 			
 			switch(choix) {
 			//Ajout d'un nombre
 			case 1:
 				System.out.print("Entrez un nombre : ");
-				try {
-					nombreEntre = questionUser.nextFloat();
-				}catch(Exception e) {
-					System.out.println("Mauvaise entrée");
+				entreeUtilisateurOk = false;
+				
+				while(!entreeUtilisateurOk) {
+					if(questionUser.hasNextFloat()) {
+						nombreEntre = questionUser.nextFloat();
+						entreeUtilisateurOk = true;
+					}else {
+						System.out.println("Entrez un nombre :");
+						questionUser.next();
+					}
 				}
 				
 				//Si le tableau est plein, on en fait un nouveau
